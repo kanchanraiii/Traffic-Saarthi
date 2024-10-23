@@ -14,7 +14,7 @@ import tempfile
 from io import BytesIO
 
 model = YOLO("trained_model.pt")
-APIKEY = "836hjeGZtIvmzl6ywJgL7IVnDoKJGeVk"
+APIKEY = "YOUR-API-KEY"
 ROUTE_DATA_FILE = 'route_data.json'
 USER_DATA_FILE = 'user_data.json'
 
