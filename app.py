@@ -15,7 +15,8 @@ import tempfile
 from io import BytesIO
 
 # Load the YOLO model
-model = YOLO("trained_model.pt")
+working_dir = os.path.dirname(os.path.abspath(__file__))
+model = YOLO(f'{working_dir}/trained_model.pt')
 APIKEY = "836hjeGZtIvmzl6ywJgL7IVnDoKJGeVk"
 ROUTE_DATA_FILE = 'route_data.json'
 USER_DATA_FILE = 'user_data.json'
@@ -115,7 +116,7 @@ if selected == "Home":
     st.title("Welcome to Traffic Saarthi")
     st.write("This webapp allows you to optimize routes and get real-time congestion predictions using YOLO V8.")
     st.write("Use the sidebar to navigate to the Route Optimization page.")
-    st.image("image0_0.jpg", width=600)
+    st.image(f'{working_dir}/image0_0.jpg', width=600)
 
 
 elif selected == "Route Optimization":
@@ -238,7 +239,7 @@ elif selected == "Yolo Real Time Congestion":
             congestion_level, num_detections = predict_congestion(results)
             
             # Display the image with bounding boxes
-            st.image(results[0].plot(), caption=f"{congestion_level} ({num_detections} vehicles detected)", use_column_width=True)
+            st.image(results[0].plot(), caption=f"{congestion_level} ({num_detections} vehicles detected)", use_container_width=True)
             st.write(f"Congestion Level: {congestion_level}")
             st.write(f"Number of Vehicles Detected: {num_detections}")
 
